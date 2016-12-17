@@ -2,12 +2,8 @@
 Способ автоматизированно изменить метаданные, большого количества, скачанных аудифайлов с яндекс музыки
 
 Понадобятся следующие пакеты:
-  jq (sudo apt install jq) Нужен для парсинга json
-  mid3v2 (sudo apt install python-mutagen) Нужен для изменения метаданных
+- jq (sudo apt install jq) Нужен для парсинга json
+- mid3v2 (sudo apt install python-mutagen) Нужен для изменения метаданных
 
 Предварительно ее нужно скачать. Например  wget'ом.
-Сохранить json метаданных этой музыки. Например с помощью curl'а.
-Далее json  переделываем в более удобочитаемый вид:
-cat json | jq '.playlist.tracks[] | {"size":.fileSize,"title":.title,"artist":.artists[0].name,"cover":.artists[0].cover.uri,"genre":.albums[0].genre,"album":.albums[0].title,"year":.albums[0].year}' > json2
-Запускаем параллельно много копий скрипта изменяющего метаданные:
-cat json2 | jq '.[]' | cut -d'"' -f2 | parallel -n7 --no-notice ./change.sh
+Дальнейшие действия читать в terminal.sh
